@@ -11,9 +11,10 @@ public class MaisvidaApplication {
     public static void main(String[] args) {
         SpringApplication.run(MaisvidaApplication.class, args);
     }
-    
+
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
 }

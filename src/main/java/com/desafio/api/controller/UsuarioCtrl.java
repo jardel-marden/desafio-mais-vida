@@ -7,7 +7,11 @@ package com.desafio.api.controller;
 
 import com.desafio.api.model.Usuario;
 import com.desafio.api.model.repository.UsuarioRepository;
+import com.desafio.api.model.serializer.UsuarioSerializer;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import org.springframework.data.rest.webmvc.BasePathAwareController;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,7 +22,10 @@ import org.springframework.web.bind.annotation.RestController;
  * @author deoprog
  */
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/usuarios")
+@BasePathAwareController
+@JsonSerialize(using = UsuarioSerializer.class)
+@CrossOrigin(origins = "*")
 public class UsuarioCtrl {
 
     private final UsuarioRepository userRepository;
@@ -30,7 +37,7 @@ public class UsuarioCtrl {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
     
-    @RequestMapping(value = "/usuarios/signup/", method = RequestMethod.POST)
+    @RequestMapping(value = "/signup/", method = RequestMethod.POST)
     public void signUp(@RequestBody Usuario user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userRepository.save(user);

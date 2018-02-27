@@ -8,7 +8,8 @@ package com.desafio.api.model;
 
 import com.desafio.api.enuns.EnumEspecialidade;
 import com.desafio.api.enuns.EnumStatus;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.desafio.api.model.serializer.MedicoSerializer;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -35,8 +36,8 @@ import org.hibernate.validator.constraints.NotEmpty;
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonSerialize(using = MedicoSerializer.class)
 @Entity
-@JsonIgnoreProperties(value = {"getDataCriacao", "getDataAtualizacao", "getVersao"}, allowGetters = true)
 public class Medico extends General implements Serializable {
 
     private static final long serialVersionUID = 1L;
