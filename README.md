@@ -16,16 +16,23 @@ algum servidor de aplicação Java(preferencialmente o Wildfly 11.0.0).
 # Observações importantes:
 ● Mesmo que o candidato não consiga finalizar todas as telas, por favor envie o que for possível
 fazer dentro do prazo e assim iremos analisar seus fontes.
+
 ● Serão considerados mais relevantes os projetos que forem feitos em menor tempo, com maior
 qualidade e com o maior número das tecnologias mencionadas acima.
+
 ● Na tela de listagem dos dados o candidato que fizer uma busca utilizando Spring Data
 Repositories e Full text search terá maior relevância com relação aos outros candidatos.
+
 ● O candidato que utilizar OAuth2 na autenticação terá maior relevância com relação aos outros
 candidatos.
+
 ● Uma boa sugestão para os candidatos é preparar o README do github com uma boa
 documentação de como rodar o seu projeto, seja o back quanto o front.
+
 ● Será considerado um grande diferencial o candidato que utilizar o Swagger para documentar a
 sua API no backend.
+
 ● Caso não envie no prazo, será desclassificado automaticamente.
+
 ● Caso passe para a próxima etapa do processo, chamaremos o candidato para apresentar o seu
 código fonte para nossa equipe técnica.
