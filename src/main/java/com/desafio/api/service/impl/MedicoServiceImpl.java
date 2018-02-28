@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.desafio.api.model.service.impl;
+package com.desafio.api.service.impl;
 
-import com.desafio.api.model.Medico;
-import com.desafio.api.model.repository.MedicoRepository;
-import com.desafio.api.model.service.MedicoService;
+import com.desafio.api.domain.Medico;
+import com.desafio.api.repository.MedicoRepository;
+import com.desafio.api.service.MedicoService;
 import java.util.List;
 import java.util.Optional;
 import org.slf4j.Logger;

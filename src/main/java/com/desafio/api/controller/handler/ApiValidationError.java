@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.desafio.api.model.util;
+package com.desafio.api.controller.handler;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

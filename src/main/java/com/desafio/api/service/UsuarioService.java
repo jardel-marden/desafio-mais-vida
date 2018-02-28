@@ -3,22 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.desafio.api.model.service;
+package com.desafio.api.service;
 
-import com.desafio.api.model.Medico;
+import com.desafio.api.domain.Usuario;
 import java.util.Optional;
 
 /**
  *
  * @author deoprog
  */
-public interface MedicoService extends Crud<Medico> {
+public interface UsuarioService extends Crud<Usuario>{
 
     /**
-     * Retorna consulta de médicos por nome
+     * Retorna consulta de usuario por username
      *
-     * @param nome
+     * @param username
      * @return Optional
      */
-    Optional<Medico> findByNome(String nome);
+    Optional<Usuario> findByUsername(String username);
 }

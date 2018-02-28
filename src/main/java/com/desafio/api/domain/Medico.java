@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.desafio.api.model;
+package com.desafio.api.domain;
 
 
 import com.desafio.api.enuns.EnumEspecialidade;
 import com.desafio.api.enuns.EnumStatus;
-import com.desafio.api.model.serializer.MedicoSerializer;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,12 +19,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**
@@ -36,7 +36,8 @@ import org.hibernate.validator.constraints.NotEmpty;
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonSerialize(using = MedicoSerializer.class)
+@JsonAutoDetect
+//@JsonSerialize(using = MedicoSerializer.class)
 @Entity
 public class Medico extends General implements Serializable {
 
@@ -48,26 +49,30 @@ public class Medico extends General implements Serializable {
     private Long id;
     
     @NotEmpty(message = "O nome não pode ser vazio.")
-    @Length(min = 3, max = 200, message = "Nome deve conter entre 3 e 200 caracteres.")
+    @NotBlank(message = "O nome não pode ser vazio.")
+    @Size(min = 3, max = 200, message = "Nome deve conter entre 3 e 200 caracteres.")
     @NotNull(message = "O nome não pode ser tipo Nulo")
     private String nome;
     
-    @NotEmpty(message = "O sobre-nome não pode ser vazio.")
-    @Length(min = 3, max = 200, message = "Sobre-nome deve conter entre 3 e 200 caracteres.")
-    @NotNull(message = "O sobre-nome não pode ser tipo Nulo")
+    @NotEmpty(message = "O sobrenome não pode ser vazio.")
+    @NotBlank(message = "O sobrenome não pode ser vazio.")
+    @Size(min = 3, max = 200, message = "Sobre-nome deve conter entre 3 e 200 caracteres.")
+    @NotNull(message = "O sobrenome não pode ser tipo Nulo")
     @Column(name = "sobre_nome")
     private String sobreNome;
     
-    @Email(message = "E-mail informado invalido.")
+    @Email(message = "E-mail invalido.")
     @NotNull
     private String email;
     
     private boolean ativo;
     
     @Enumerated(EnumType.STRING)
+    @NotNull(message = "O status não foi atribuido")
     private EnumStatus status;
     
     @Enumerated(EnumType.STRING)
+    @NotNull(message = "A especialidade não foi informada")
     private EnumEspecialidade especialidade;
     
     private String cidade;

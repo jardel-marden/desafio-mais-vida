@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.desafio.api.model.serializer;
+package com.desafio.api.domain.std;
 
-import com.desafio.api.model.Medico;
-import com.desafio.api.model.Usuario;
+import com.desafio.api.domain.Medico;
+import com.desafio.api.domain.Usuario;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;

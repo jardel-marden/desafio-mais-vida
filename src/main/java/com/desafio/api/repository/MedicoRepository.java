@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.desafio.api.model.repository;
+package com.desafio.api.repository;
 
-import com.desafio.api.model.Medico;
+import com.desafio.api.domain.Medico;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @author deoprog
  */
-@Transactional(readOnly = true)
+@Transactional
 @Repository
 public interface MedicoRepository extends JpaRepository<Medico, Long> {
 

@@ -3,19 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.desafio.api.model.service;
+package com.desafio.api.util;
 
 import java.util.List;
+import lombok.Data;
 
 /**
  *
  * @author deoprog
  * @param <T>
  */
-public interface Crud<T> {       
-    T save(T entity);
-    void update(T entity);
-    void delete(Long id);
-    T find(Long id);
-    List<T> findAll();
+@Data
+public class Response<T> {
+    
+    private T data;
+    private List<String> errors;    
+    
 }

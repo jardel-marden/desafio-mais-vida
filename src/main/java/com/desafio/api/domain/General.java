@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.desafio.api.model;
+package com.desafio.api.domain;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -21,18 +21,18 @@ import javax.persistence.Version;
  */
 @MappedSuperclass
 public class General implements Serializable {
-    
+
     private static final long serialVersionUID = 1L;
-    
+
     @Version
     private int versao;
     
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
-    @Column(name="data_criacao")
+    @Column(name = "data_criacao")
     private Date dataCriacao;
-   
+        
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
-    @Column(name="data_atualizacao")
+    @Column(name = "data_atualizacao")
     private Date dataAtualizacao;
 
     public int getVersao() {
@@ -68,7 +68,7 @@ public class General implements Serializable {
     public void prePersit() {
         this.dataCriacao = new Date();
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 5;
@@ -100,5 +100,5 @@ public class General implements Serializable {
     public String toString() {
         return "General{" + "versao=" + versao + ", dataCriacao=" + dataCriacao + ", dataAtualizacao=" + dataAtualizacao + '}';
     }
-        
+
 }
