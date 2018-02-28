@@ -1,6 +1,6 @@
 /**
  * @see TokenAuthenticationService
- * 
+ *
  * Será utilizada para fazer a verificação do usuário e senha com base em sua configuração.
  */
 package com.desafio.api.jwt.service;
@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Date;
+import javax.ws.rs.core.MediaType;
+import org.springframework.http.ResponseEntity;
 
 /**
  *
@@ -25,7 +27,7 @@ public class TokenAuthenticationService {
     public static final String SECRET = "9@#qweropasdfgtyuihjklzxcvbnm56$";
     public static final String TOKEN_PREFIX = "Bearer";
     public static final String HEADER_STRING = "Authorization";
-
+    
     public static void addAuthentication(HttpServletResponse res, String username) {
         String JWT = Jwts.builder()
                 .setSubject(username)
@@ -33,13 +35,11 @@ public class TokenAuthenticationService {
                 .signWith(SignatureAlgorithm.HS512, SECRET)
                 .compact();
 
-        String token = TOKEN_PREFIX + " " + JWT;
-        res.addHeader(HEADER_STRING, token);
+        res.addHeader(HEADER_STRING, TOKEN_PREFIX + " " + JWT);
 
         try {
-            res.getOutputStream().print(token);
+            res.getOutputStream().print(ResponseEntity.ok().body(JWT).getBody());
         } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
