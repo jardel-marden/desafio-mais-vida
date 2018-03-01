@@ -17,6 +17,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @EnableConfigurationProperties
+//@EnableJpaRepositories
 @EnableAutoConfiguration
 @EntityScan(basePackages = {"com.desafio.api.domain"})
 @ComponentScan(basePackages = {"com.desafio.api.component"})

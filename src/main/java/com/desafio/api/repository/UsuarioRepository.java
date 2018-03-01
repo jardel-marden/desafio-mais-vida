@@ -6,17 +6,18 @@
 package com.desafio.api.repository;
 
 import com.desafio.api.domain.Usuario;
+import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author deoprog
  */
-@Repository
+@Transactional(readOnly = true)
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
-    
-    @Transactional(readOnly = true)
-    Usuario findByUsername(String username);  
+
+    Usuario findByUsername(String username);
+        
+    Optional<Usuario> findByUsernameAndPassword(String username, String password);
 }

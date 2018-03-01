@@ -6,7 +6,6 @@
 package com.desafio.api.controller;
 
 import com.desafio.api.domain.Usuario;
-import com.desafio.api.repository.UsuarioRepository;
 import com.desafio.api.domain.std.UsuarioSerializer;
 import com.desafio.api.service.impl.UsuarioServiceImpl;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;

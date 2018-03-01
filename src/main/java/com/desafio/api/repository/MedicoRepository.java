@@ -6,27 +6,22 @@
 package com.desafio.api.repository;
 
 import com.desafio.api.domain.Medico;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author deoprog
  */
-@Transactional
-@Repository
+@Transactional(readOnly = true)
 public interface MedicoRepository extends JpaRepository<Medico, Long> {
 
     Medico findByNome(String nome);
 
-    Medico findBySobreNome(String sobrenome);
+    Medico findBySobrenome(String sobrenome);
+    
+    Medico findByNomeOrSobrenome(String nome, String sobrenome);
 
-    Medico findByNomeOrSobreNome(String nome, String sobrenome);
-    
     Medico findByEmail(String email);
-    
-    Page<Medico> findByNome(Pageable pageable);
+
 }

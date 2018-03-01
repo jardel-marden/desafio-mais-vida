@@ -59,10 +59,11 @@ public class Medico extends General implements Serializable {
     @Size(min = 3, max = 200, message = "Sobre-nome deve conter entre 3 e 200 caracteres.")
     @NotNull(message = "O sobrenome não pode ser tipo Nulo")
     @Column(name = "sobre_nome")
-    private String sobreNome;
+    private String sobrenome;
     
     @Email(message = "E-mail invalido.")
     @NotNull
+    @Column(unique = true)
     private String email;
     
     private boolean ativo;

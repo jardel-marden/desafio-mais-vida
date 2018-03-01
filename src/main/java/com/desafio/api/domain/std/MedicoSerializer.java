@@ -26,7 +26,7 @@ public class MedicoSerializer extends StdSerializer<Medico> {
         jgen.writeStartObject();
         jgen.writeNumberField("id", value.getId());
         jgen.writeStringField("nome", value.getNome());
-        jgen.writeStringField("sobrenome", value.getSobreNome());
+        jgen.writeStringField("sobrenome", value.getSobrenome());
         jgen.writeStringField("especialidade", value.getEspecialidade().name());
         jgen.writeStringField("email", value.getEmail());
         jgen.writeBooleanField("ativo", value.isAtivo());

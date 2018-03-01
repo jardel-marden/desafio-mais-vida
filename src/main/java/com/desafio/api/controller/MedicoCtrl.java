@@ -8,10 +8,16 @@ package com.desafio.api.controller;
 import com.desafio.api.enuns.EnumEspecialidade;
 import com.desafio.api.domain.Medico;
 import com.desafio.api.service.impl.MedicoServiceImpl;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.ResponseHeader;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 import javax.validation.Valid;
+import javax.ws.rs.core.MediaType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +38,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  *
  * @author deoprog
  */
+@Api
 @Controller
 @RequestMapping(value = "/medicos")
 @BasePathAwareController
@@ -49,6 +56,20 @@ public class MedicoCtrl {
         return medicoService.findAll();
     }
 
+    @ApiOperation(
+            value = "Cria novo medico",
+            consumes = MediaType.APPLICATION_JSON,
+            produces = MediaType.APPLICATION_JSON)
+    @ApiResponses(
+            @ApiResponse(
+                    code = 201,
+                    message = "Novo medico criado",
+                    response = Medico.class,
+                    responseHeaders
+                    = @ResponseHeader(
+                            name = "Location",
+                            description = "uri do novo medico",
+                            response = String.class)))
     @PostMapping
     public ResponseEntity<Object> createMedico(@Valid @RequestBody Medico medico) {
         medicoService.save(medico);
@@ -81,7 +102,7 @@ public class MedicoCtrl {
         Medico medico = medicoService.find(id);
         if (medico == null) {
             return ResponseEntity.notFound().build();
-        }        
+        }
         medicoService.delete(medico.getId());
         return ResponseEntity.ok(medico);
     }
