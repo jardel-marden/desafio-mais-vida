@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/deoprog/desafio-mais-vida.svg?branch=master)](https://travis-ci.org/deoprog/desafio-mais-vida)
+
 # Desafio Mais Vida
 API desafio mais vida com Java e Spring Boot
 
@@ -9,9 +11,6 @@ de dados NoSQL ). O projeto deve seguir os campos dos protótipos abaixo, mas o 
 do candidato(preferencialmente para tablet ou celular, mas se quiser fazer web não tem problema). Nós
 utilizamos as tecnologias mencionadas acima como preferenciais, pois fazendo com elas a
 possibilidade de você passar de etapa no processo seletivo é bem maior.
-O código fonte deve ser enviado para ​ nataniel.paiva@maisvida.med.br​ (de preferência em um link do
-github) em um prazo de no máximo 3 dias a partir do recebimento da prova , o mesmo deve rodar em
-algum servidor de aplicação Java(preferencialmente o Wildfly 11.0.0).
 
 # Observações importantes:
 ● Mesmo que o candidato não consiga finalizar todas as telas, por favor envie o que for possível
@@ -26,13 +25,4 @@ Repositories e Full text search terá maior relevância com relação aos outros
 ● O candidato que utilizar OAuth2 na autenticação terá maior relevância com relação aos outros
 candidatos.
 
-● Uma boa sugestão para os candidatos é preparar o README do github com uma boa
-documentação de como rodar o seu projeto, seja o back quanto o front.
-
-● Será considerado um grande diferencial o candidato que utilizar o Swagger para documentar a
-sua API no backend.
-
-● Caso não envie no prazo, será desclassificado automaticamente.
-
-● Caso passe para a próxima etapa do processo, chamaremos o candidato para apresentar o seu
-código fonte para nossa equipe técnica.
+● Uma boa sugestão para os candidatos é preparar o
