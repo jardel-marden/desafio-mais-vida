@@ -41,14 +41,14 @@ public class MedicoServiceImpl implements MedicoService {
         return Optional.ofNullable(this.medicoRepository.findOne(id));
     }
 
-    @Override
-    @CachePut("medicoPorId")
+    @Override    
     public Medico save(Medico entity) {
         log.info("Persistir medico: {}", entity);
         return this.medicoRepository.save(entity);
     }
 
     @Override
+    @CachePut("medicoPorId")
     public void update(Medico entity) {
         this.medicoRepository.save(entity);
     }

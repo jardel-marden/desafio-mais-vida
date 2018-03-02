@@ -12,10 +12,17 @@ do candidato(preferencialmente para tablet ou celular, mas se quiser fazer web n
 utilizamos as tecnologias mencionadas acima como preferenciais, pois fazendo com elas a
 possibilidade de você passar de etapa no processo seletivo é bem maior.
 
-# Observações:
-● JTW para authenticação das requisições credênciais padrão
-	- Usuário: admin
-	- Senha: 010203
-	- Authenticate, Bearer [TOKEN]
+# Observações importantes:
+● Mesmo que o candidato não consiga finalizar todas as telas, por favor envie o que for possível
+fazer dentro do prazo e assim iremos analisar seus fontes.
 
-● Qual quer dúvida consultar documentção em https://desafio-mais-vida.herokuapp.com/swagger-ui.html
+● Serão considerados mais relevantes os projetos que forem feitos em menor tempo, com maior
+qualidade e com o maior número das tecnologias mencionadas acima.
+
+● Na tela de listagem dos dados o candidato que fizer uma busca utilizando Spring Data
+Repositories e Full text search terá maior relevância com relação aos outros candidatos.
+
+● O candidato que utilizar OAuth2 na autenticação terá maior relevância com relação aos outros
+candidatos.
+
+● Uma boa sugestão para os candidatos é preparar o
