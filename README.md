@@ -13,9 +13,13 @@ utilizamos as tecnologias mencionadas acima como preferenciais, pois fazendo com
 possibilidade de você passar de etapa no processo seletivo é bem maior.
 
 # Observações:
-● JTW para authenticação das requisições credênciais padrão
-	- Usuário: admin
-	- Senha: 010203
-	- Authenticate, Bearer [TOKEN]
 
+● JTW para authenticação das requisições credênciais padrão
+
+	- Usuário: admin
+	
+	- Senha: 010203
+	
+	- Authenticate, Bearer [TOKEN]
+	
 ● Qualquer dúvida consultar documentção em https://desafio-mais-vida.herokuapp.com/swagger-ui.html
