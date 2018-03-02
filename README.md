@@ -18,4 +18,4 @@ possibilidade de você passar de etapa no processo seletivo é bem maior.
 	- Senha: 010203
 	- Authenticate, Bearer [TOKEN]
 
-● Qual quer dúvida consultar documentção em https://desafio-mais-vida.herokuapp.com/swagger-ui.html
+● Qualquer dúvida consultar documentção em https://desafio-mais-vida.herokuapp.com/swagger-ui.html
