@@ -21,4 +21,13 @@ public interface MedicoService extends Crud<Medico> {
      * @return Optional
      */
     Optional<Medico> findByNome(String nome);
+    
+    /**
+     * Retorna consulta de médicos por Id
+     *
+     * @param id
+     * @return Optional
+     */
+    Optional<Medico> findById(Long id);    
+        
 }

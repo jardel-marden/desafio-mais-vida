@@ -13,6 +13,8 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 /**
@@ -32,9 +34,17 @@ public class MedicoServiceImpl implements MedicoService {
         log.info("Buscando nome do medico {}", nome);
         return Optional.ofNullable(this.medicoRepository.findByNome(nome));
     }
+    
+    @Override
+    @Cacheable("medicoPorId")
+    public Optional<Medico> findById(Long id) {
+        return Optional.ofNullable(this.medicoRepository.findOne(id));
+    }
 
     @Override
-    public Medico save(Medico entity) {        
+    @CachePut("medicoPorId")
+    public Medico save(Medico entity) {
+        log.info("Persistir medico: {}", entity);
         return this.medicoRepository.save(entity);
     }
 
@@ -46,16 +56,16 @@ public class MedicoServiceImpl implements MedicoService {
     @Override
     public void delete(Long id) {
         this.medicoRepository.delete(id);
-    }    
-    
-    @Override
-    public Medico find(Long id) {
-        return this.medicoRepository.findOne(id);
-    }
+    }       
 
     @Override
     public List<Medico> findAll() {
         return this.medicoRepository.findAll();
+    }
+
+    @Override
+    public Medico find(Long id) {
+        return this.medicoRepository.findOne(id);
     }
     
 }

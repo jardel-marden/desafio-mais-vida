@@ -24,10 +24,20 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    private static final String[] AUTH_WHITELIST = {
+        "/v2/api-docs",
+        "/swagger-resources",
+        "/swagger-resources/**",
+        "/configuration/ui",
+        "/configuration/security",
+        "/swagger-ui.html",
+        "/webjars/**"
+    };
+
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf().disable().authorizeRequests()
-//                .antMatchers("/api/**").permitAll()
+                .antMatchers(AUTH_WHITELIST).permitAll()
                 .antMatchers(HttpMethod.POST, "/api/v1/login").permitAll()
                 .anyRequest().authenticated()
                 .and()
@@ -37,13 +47,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilterBefore(new JWTAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
     }
 
-    
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        // conta default
         auth.inMemoryAuthentication()
                 .withUser("admin")
                 .password("010203")
                 .roles("ADMIN");
     }
+
 }
