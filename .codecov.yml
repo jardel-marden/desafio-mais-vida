@@ -1,0 +1,11 @@
+language: java
+
+script: "mvn spring-boot:run"
+
+codecov:
+  bot: deoprog
+
+coverage:
+  range: 70..100
+  round: down
+  precision: 2
