@@ -23,6 +23,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -36,10 +37,12 @@ public class MedicoServiceImpl implements MedicoService {
     @Autowired
     private MedicoRepository medicoRepository;
 
+    @Autowired
     private final EntityManager entityManager;
 
     @Autowired
     public MedicoServiceImpl(EntityManager entityManager) {
+        super();
         this.entityManager = entityManager;
     }
 
@@ -92,21 +95,27 @@ public class MedicoServiceImpl implements MedicoService {
     }
 
     @Override
+    @Transactional
     public List<Medico> fuzzySearch(String searchTearm) {
+        if (searchTearm == null) {
+            return null;
+        }
+        log.info("Fuzzy search medico from: {}", searchTearm);
+
         FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(this.entityManager);
         QueryBuilder queryBuilder = fullTextEntityManager.getSearchFactory().buildQueryBuilder().forEntity(Medico.class).get();
-        
-        Query luceneQuery = queryBuilder.keyword().fuzzy().withEditDistanceUpTo(1).withEditDistanceUpTo(1)
-                .onFields("nome","sobrenome").matching(searchTearm).createQuery();
-        
+
+        Query luceneQuery = queryBuilder.keyword().fuzzy().withEditDistanceUpTo(1).withPrefixLength(1)
+                .onFields("nome", "sobrenome").matching(searchTearm).createQuery();
+
         javax.persistence.Query jpaQuery = fullTextEntityManager.createFullTextQuery(luceneQuery, Medico.class);
-        
+
         List<Medico> medicos = null;
         try {
             medicos = jpaQuery.getResultList();
         } catch (NoResultException e) {
         }
-        
+
         return medicos;
     }
 

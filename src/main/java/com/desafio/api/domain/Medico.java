@@ -19,7 +19,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -30,6 +29,7 @@ import org.hibernate.search.annotations.Index;
 import org.hibernate.search.annotations.Indexed;
 import org.hibernate.search.annotations.Store;
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
 /**
@@ -53,16 +53,16 @@ public class Medico extends General implements Serializable {
     private Long id;
     
     @NotBlank(message = "O nome não pode ser vazio.")
-    @Size(min = 3, max = 200, message = "Nome deve conter entre 3 e 200 caracteres.")
+    @Length(min = 3, max = 200, message = "Nome deve conter entre 3 e 200 caracteres.")
     @NotNull(message = "O nome não pode ser tipo Nulo")
     @Field(index = Index.YES, analyze = Analyze.YES, store = Store.NO)
     private String nome;
     
     @NotBlank(message = "O sobrenome não pode ser vazio.")
-    @Size(min = 3, max = 200, message = "Sobre-nome deve conter entre 3 e 200 caracteres.")
+    @Length(min = 3, max = 200, message = "Sobre-nome deve conter entre 3 e 200 caracteres.")
     @NotNull(message = "O sobrenome não pode ser tipo Nulo")
-    @Field(index = Index.YES, analyze = Analyze.YES, store = Store.NO)
     @Column(name = "sobre_nome")
+    @Field(index = Index.YES, analyze = Analyze.YES, store = Store.NO)
     private String sobrenome;
     
     @Email(message = "E-mail invalido.")

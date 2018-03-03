@@ -17,7 +17,6 @@ import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 import javax.validation.Valid;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -59,8 +58,14 @@ public class MedicoCtrl {
     
     @GetMapping(value = "/{search}")
     public @ResponseBody
-    List<Medico> getMedicoSearch(@PathParam("search") String search) {
-        return medicoService.fuzzySearch(search);
+    ResponseEntity<List<Medico>> getMedicoSearch(@PathVariable(value = "search") String search) {
+        List<Medico> medicos = medicoService.fuzzySearch(search);
+        
+        if (medicos == null && medicos.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        
+        return ResponseEntity.ok().body(medicos);
     }
 
     @ApiOperation(
