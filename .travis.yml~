@@ -1,11 +1,25 @@
 language: java
 jdk:
   - oraclejdk8
+
 deploy:
+
  provider: heroku
  api-key:
   secure: 12cb7ace-d13a-4036-b888-bd0a94886f84
  app: desafio-mais-vida
+ on:
+  repo: deoprog/desafio-mais-vida
+  branch: general
+
+ provider: heroku
+ api-key:
+  secure: 12cb7ace-d13a-4036-b888-bd0a94886f84
+ app: desafio-mais-vida
+ on:
+  repo: deoprog/desafio-mais-vida
+  branch: master
+
 after_success:
   - bash <(curl -s https://codecov.io/bash) -t d994cd3e-efdf-46dc-a296-f520853b7b72
 
