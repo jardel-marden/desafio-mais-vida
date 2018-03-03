@@ -7,8 +7,5 @@ deploy:
   secure: 12cb7ace-d13a-4036-b888-bd0a94886f84
  app: desafio-mais-vida
 
-
-
-after_success:
- - bash <(curl -s https://codecov.io/bash)
+cat codecov.yml | curl --data-binary @- https://codecov.io/validate
 

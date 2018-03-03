@@ -14,7 +14,6 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import java.util.Date;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.regex;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -45,7 +44,7 @@ public class SwaggerConfig {
     private ApiInfo apiIno() {
         return new ApiInfoBuilder().title("Desafio mais vida")
                 .description("Documentação de acesso a API Desafio mais vida")
-                .contact(new Contact("Jardel Marden", "https://github.com/deoprog/desafio-mais-vida/branches", "deoprog@gmail.com"))
+                .contact(new Contact("Jardel Marden", "https://github.com/deoprog/desafio-mais-vida", "deoprog@gmail.com"))
                 .version("1.0.0")
                 .build();
     }

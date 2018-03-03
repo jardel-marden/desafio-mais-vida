@@ -13,8 +13,8 @@ import org.springframework.security.core.Authentication;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.Date;
-import javax.ws.rs.core.MediaType;
 import org.springframework.http.ResponseEntity;
 
 /**
@@ -50,11 +50,12 @@ public class TokenAuthenticationService {
                 .getBody()
                 .getSubject();
 
-        return user != null ? new UsernamePasswordAuthenticationToken(user, null, null) : null;
+        return user != null ? new UsernamePasswordAuthenticationToken(user, null, Collections.emptyList()) : null;
     }
 
-    public static Authentication getAuthentication(HttpServletRequest request) {
+    public static Authentication getAuthentication(HttpServletRequest request) {        
         String token = request.getHeader(HEADER_STRING);
+        
         if (token != null) {
             return getByToken(token);
         }

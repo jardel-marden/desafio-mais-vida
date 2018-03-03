@@ -42,7 +42,7 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
                 new UsernamePasswordAuthenticationToken(
                         creds.getUsername(),
                         creds.getPassword(),
-                        Collections.<GrantedAuthority>emptyList()
+                        Collections.emptyList()
                 )
         );
     }

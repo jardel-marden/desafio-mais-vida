@@ -6,6 +6,7 @@
 package com.desafio.api.service;
 
 import com.desafio.api.domain.Medico;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -28,6 +29,7 @@ public interface MedicoService extends Crud<Medico> {
      * @param id
      * @return Optional
      */
-    Optional<Medico> findById(Long id);    
-        
+    Optional<Medico> findById(Long id);
+    
+    List<Medico> fuzzySearch(final String searchTearm);
 }
